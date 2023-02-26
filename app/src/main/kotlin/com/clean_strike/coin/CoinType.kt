@@ -1,7 +1,9 @@
 package com.clean_strike.coin
 
-enum class CoinType {
-    BLACK,
-    RED,
-    STRIKER
+enum class CoinType(private val coin: () -> Coin) {
+    BLACK({ BlackCoin() }),
+    RED({ RedCoin() }),
+    STRIKER({ StrikerCoin() });
+
+    fun getCoin(): Coin = coin()
 }
