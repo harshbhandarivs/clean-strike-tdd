@@ -6,6 +6,8 @@ import kotlin.test.assertEquals
 class BlackCoinTest {
     @Test
     fun `Should check the points of black coin to be 1`() {
-        assertEquals(1, BlackCoin.POINTS)
+        val blackCoin = BlackCoin()
+
+        assertEquals(1, blackCoin.getPoints())
     }
 }
