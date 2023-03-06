@@ -14,4 +14,24 @@ class StrikerStrikeTest {
 
         assertEquals(PlayerStats(2, 2, 2), newPlayerStats)
     }
+
+    @Test
+    fun `Should implement Striker Strike outcome for two consecutive zeros`() {
+        val strike = StrikerStrike()
+        val playerStats = PlayerStats(3, 1, 2)
+
+        val newPlayerStats = strike.calculateNewPlayerStats(playerStats)
+
+        assertEquals(PlayerStats(1, 2, 0), newPlayerStats)
+    }
+
+    @Test
+    fun `Should implement Striker Strike outcome for two fouls`() {
+        val strike = StrikerStrike()
+        val playerStats = PlayerStats(3, 2, 1)
+
+        val newPlayerStats = strike.calculateNewPlayerStats(playerStats)
+
+        assertEquals(PlayerStats(1, 0, 2), newPlayerStats)
+    }
 }

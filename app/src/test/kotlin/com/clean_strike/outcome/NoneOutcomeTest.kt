@@ -13,4 +13,13 @@ class NoneOutcomeTest {
 
         assertEquals(PlayerStats(0, 0, 1), newPlayerStats)
     }
+
+    @Test
+    fun `Should implement none outcome for two consecutive zeros`() {
+        val noneOutcome = NoneOutcome()
+        val playerStats = PlayerStats(1, 0, 2)
+        val newPlayerStats = noneOutcome.calculateNewPlayerStats(playerStats)
+
+        assertEquals(PlayerStats(0, 0, 0), newPlayerStats)
+    }
 }

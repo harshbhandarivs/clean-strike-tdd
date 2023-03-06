@@ -18,4 +18,12 @@ data class PlayerStats(val score: Int, val fouls: Int, val consecutiveZero: Int)
     fun incrementConsecutiveZero(): PlayerStats {
         return PlayerStats(score, fouls, consecutiveZero + 1)
     }
+
+    fun resetConsecutiveZeros(): PlayerStats {
+        return PlayerStats(score, fouls, 0)
+    }
+
+    fun resetFouls(): PlayerStats {
+        return PlayerStats(score, 0, consecutiveZero)
+    }
 }
