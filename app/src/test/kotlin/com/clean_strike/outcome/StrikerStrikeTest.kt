@@ -1,8 +1,10 @@
 package com.clean_strike.outcome
 
+import com.clean_strike.board.BoardConfig
 import com.clean_strike.player.PlayerStats
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
+import kotlin.test.assertTrue
 
 class StrikerStrikeTest {
     @Test
@@ -33,5 +35,13 @@ class StrikerStrikeTest {
         val newPlayerStats = strike.calculateNewPlayerStats(playerStats)
 
         assertEquals(PlayerStats(1, 0, 2), newPlayerStats)
+    }
+
+    @Test
+    fun `Should validate board config for outcome`() {
+        val strike = StrikerStrike()
+        val boardConfig = BoardConfig(0, 0)
+
+        assertTrue(strike.isBoardConfigValid(boardConfig))
     }
 }

@@ -1,5 +1,6 @@
 package com.clean_strike.outcome
 
+import com.clean_strike.board.BoardConfig
 import com.clean_strike.player.PlayerStats
 
 class StrikerStrike : Outcome {
@@ -9,4 +10,6 @@ class StrikerStrike : Outcome {
         outcome = if(outcome.fouls == 3) outcome.decrementScoreBy(1).resetFouls() else outcome
         return outcome
     }
+
+    override fun isBoardConfigValid(boardConfig: BoardConfig): Boolean = true
 }

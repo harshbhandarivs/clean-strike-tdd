@@ -1,8 +1,10 @@
 package com.clean_strike.outcome
 
+import com.clean_strike.board.BoardConfig
 import com.clean_strike.player.PlayerStats
 import org.junit.jupiter.api.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertTrue
 
 class NoneOutcomeTest {
     @Test
@@ -21,5 +23,13 @@ class NoneOutcomeTest {
         val newPlayerStats = noneOutcome.calculateNewPlayerStats(playerStats)
 
         assertEquals(PlayerStats(0, 0, 0), newPlayerStats)
+    }
+
+    @Test
+    fun `Should validate board config for outcome`() {
+        val defunctCoin = NoneOutcome()
+        val boardConfig = BoardConfig(1, 0)
+
+        assertTrue(defunctCoin.isBoardConfigValid(boardConfig))
     }
 }

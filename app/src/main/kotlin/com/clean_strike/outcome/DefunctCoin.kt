@@ -1,5 +1,6 @@
 package com.clean_strike.outcome
 
+import com.clean_strike.board.BoardConfig
 import com.clean_strike.player.PlayerStats
 
 class DefunctCoin : Outcome {
@@ -10,4 +11,5 @@ class DefunctCoin : Outcome {
         return outcome
     }
 
+    override fun isBoardConfigValid(boardConfig: BoardConfig): Boolean = boardConfig.numberOfBlackCoin > 0
 }

@@ -1,8 +1,11 @@
 package com.clean_strike.outcome
 
+import com.clean_strike.board.BoardConfig
 import com.clean_strike.player.PlayerStats
 import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
+import kotlin.test.assertFalse
 
 class DefunctCoinTest {
     @Test
@@ -33,5 +36,21 @@ class DefunctCoinTest {
         val newPlayerStats = strike.calculateNewPlayerStats(playerStats)
 
         assertEquals(PlayerStats(0, 0, 0), newPlayerStats)
+    }
+
+    @Test
+    fun `Should invalidate board config for outcome`() {
+        val defunctCoin = DefunctCoin()
+        val boardConfig = BoardConfig(0, 0)
+
+        assertFalse(defunctCoin.isBoardConfigValid(boardConfig))
+    }
+
+    @Test
+    fun `Should validate board config for outcome`() {
+        val defunctCoin = DefunctCoin()
+        val boardConfig = BoardConfig(1, 0)
+
+        assertTrue(defunctCoin.isBoardConfigValid(boardConfig))
     }
 }
