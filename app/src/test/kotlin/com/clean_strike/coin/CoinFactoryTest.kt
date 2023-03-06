@@ -1,6 +1,6 @@
 package com.clean_strike.coin
 
-import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.Assertions.assertInstanceOf
 import org.junit.jupiter.api.Test
 
 class CoinFactoryTest {

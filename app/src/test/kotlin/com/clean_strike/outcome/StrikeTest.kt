@@ -4,7 +4,7 @@ import com.clean_strike.player.PlayerStats
 import org.junit.jupiter.api.Test
 import kotlin.test.assertEquals
 
-class StrikeTest{
+class StrikeTest {
     @Test
     fun `Should implement Single Strike outcome by incrementing score by 1`() {
         val strike = Strike()

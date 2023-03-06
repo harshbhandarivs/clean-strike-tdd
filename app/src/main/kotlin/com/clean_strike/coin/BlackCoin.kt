@@ -1,6 +1,6 @@
 package com.clean_strike.coin
 
-class BlackCoin: Coin {
+class BlackCoin : Coin {
     companion object {
         const val POINTS = 1
     }
