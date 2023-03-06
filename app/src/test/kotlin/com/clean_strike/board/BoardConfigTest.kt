@@ -21,4 +21,18 @@ class BoardConfigTest {
 
         assertEquals(BoardConfig(5, 0), newBoardConfig)
     }
+
+    @Test
+    fun `Should return true if board config is empty`() {
+        val boardConfig = BoardConfig(0, 0)
+
+        assertTrue(boardConfig.isBoardEmpty())
+    }
+
+    @Test
+    fun `Should return false if board config is not empty`() {
+        val boardConfig = BoardConfig(1, 0)
+
+        assertFalse(boardConfig.isBoardEmpty())
+    }
 }
