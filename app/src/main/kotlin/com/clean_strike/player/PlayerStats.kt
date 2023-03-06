@@ -4,7 +4,7 @@ import kotlin.math.max
 
 data class PlayerStats(val score: Int, val fouls: Int, val consecutiveZero: Int) {
     fun incrementScoreBy(value: Int): PlayerStats {
-        return PlayerStats(score + value, fouls, 0)
+        return PlayerStats(score + value, fouls, consecutiveZero)
     }
 
     fun decrementScoreBy(value: Int): PlayerStats {
