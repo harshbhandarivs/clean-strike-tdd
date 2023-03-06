@@ -11,4 +11,6 @@ class NoneOutcome: Outcome {
     }
 
     override fun isBoardConfigValid(boardConfig: BoardConfig): Boolean = true
+
+    override fun calculateNewBoardConfig(boardConfig: BoardConfig): BoardConfig = boardConfig
 }

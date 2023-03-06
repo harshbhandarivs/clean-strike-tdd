@@ -2,10 +2,8 @@ package com.clean_strike.outcome
 
 import com.clean_strike.board.BoardConfig
 import com.clean_strike.player.PlayerStats
+import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
-import kotlin.test.assertEquals
-import kotlin.test.assertFalse
-import kotlin.test.assertTrue
 
 class StrikeTest {
     @Test
@@ -26,11 +24,22 @@ class StrikeTest {
         assertFalse(strike.isBoardConfigValid(boardConfig))
     }
 
+
     @Test
     fun `Should validate board config for outcome`() {
         val strike = Strike()
         val boardConfig = BoardConfig(1, 0)
 
         assertTrue(strike.isBoardConfigValid(boardConfig))
+    }
+
+
+    @Test
+    fun `Should decrement number of black coin by one`() {
+        val strike = Strike()
+        val boardConfig = BoardConfig(1, 1)
+        val newBoardConfig = strike.calculateNewBoardConfig(boardConfig)
+
+        assertEquals(BoardConfig(0, 1), newBoardConfig)
     }
 }

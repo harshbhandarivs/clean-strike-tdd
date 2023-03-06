@@ -12,4 +12,6 @@ class DefunctCoin : Outcome {
     }
 
     override fun isBoardConfigValid(boardConfig: BoardConfig): Boolean = boardConfig.numberOfBlackCoin > 0
+
+    override fun calculateNewBoardConfig(boardConfig: BoardConfig): BoardConfig = boardConfig.decrementBlackCoinsBy(1)
 }

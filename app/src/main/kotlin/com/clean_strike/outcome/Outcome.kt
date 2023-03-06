@@ -7,4 +7,6 @@ interface Outcome {
     fun calculateNewPlayerStats(playerStats: PlayerStats): PlayerStats
 
     fun isBoardConfigValid(boardConfig: BoardConfig): Boolean
+
+    fun calculateNewBoardConfig(boardConfig: BoardConfig): BoardConfig
 }

@@ -3,8 +3,8 @@ package com.clean_strike.outcome
 import com.clean_strike.board.BoardConfig
 import com.clean_strike.player.PlayerStats
 import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
-import kotlin.test.assertTrue
 
 class StrikerStrikeTest {
     @Test
@@ -43,5 +43,14 @@ class StrikerStrikeTest {
         val boardConfig = BoardConfig(0, 0)
 
         assertTrue(strike.isBoardConfigValid(boardConfig))
+    }
+
+    @Test
+    fun `Should return board config without any change`() {
+        val strike = NoneOutcome()
+        val boardConfig = BoardConfig(1, 0)
+        val newBoardConfig = strike.calculateNewBoardConfig(boardConfig)
+
+        assertEquals(newBoardConfig, newBoardConfig)
     }
 }

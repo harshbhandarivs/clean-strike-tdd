@@ -9,4 +9,6 @@ class RedStrike : Outcome {
     }
 
     override fun isBoardConfigValid(boardConfig: BoardConfig): Boolean = boardConfig.numberOfRedCoin > 0
+
+    override fun calculateNewBoardConfig(boardConfig: BoardConfig): BoardConfig = boardConfig.decrementRedCoinsBy(1)
 }
