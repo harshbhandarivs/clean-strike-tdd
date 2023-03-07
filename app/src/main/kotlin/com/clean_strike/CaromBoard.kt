@@ -12,7 +12,7 @@ class CaromBoard(
 
     fun play(playerNumber: Int, outcomeType: OutcomeType) {
         val outcome = outcomeType.outcome
-        if (outcome.isBoardConfigValid(boardConfig)) {
+        if (outcome.isBoardConfigValid(boardConfig) && playerStatsMap.containsKey(playerNumber)) {
             setPlayerStats(playerNumber, outcome)
             setBoardConfig(outcome)
         }
