@@ -2,7 +2,6 @@ package com.clean_strike
 
 import com.clean_strike.board.BoardConfig
 import com.clean_strike.outcome.Outcome
-import com.clean_strike.outcome.OutcomeFactory
 import com.clean_strike.outcome.OutcomeType
 import com.clean_strike.player.PlayerStats
 
@@ -13,7 +12,7 @@ class CaromBoard(
 ) {
 
     fun play(playerNumber: Int, outcomeType: OutcomeType) {
-        val outcome = OutcomeFactory.getOutcome(outcomeType)
+        val outcome = outcomeType.outcome
         if (outcome.isBoardConfigValid(boardConfig)) {
             setPlayerStats(playerNumber, outcome)
             setBoardConfig(outcome)
