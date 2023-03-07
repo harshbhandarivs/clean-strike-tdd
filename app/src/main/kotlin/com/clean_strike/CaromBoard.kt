@@ -28,23 +28,14 @@ class CaromBoard(
     }
 
     fun gameResult(): String {
-        val (player1Score) = playerStatsMap[0]!!
-        val (player2Score) = playerStatsMap[1]!!
-        val isPlayer1Winner = isPlayerWinner(player1Score, player2Score)
-        val isPlayer2Winner = isPlayerWinner(player2Score, player1Score)
-        if (isPlayer1Winner) {
-            return "Player 0 is winner"
+        try {
+            val playerStatsAboveOrEqualTo5 = playerStatsMap.entries.first { it.value.score >= 5 }
+            val playerStatsCount = playerStatsMap.entries.filter { it != playerStatsAboveOrEqualTo5 }
+                .count { (playerStatsAboveOrEqualTo5.value.score - it.value.score) <= 3 }
+            if (playerStatsCount == 0) return "Player ${playerStatsAboveOrEqualTo5.key} is winner"
+            return if (boardConfig.isBoardEmpty()) "It is a draw" else "Game is not over"
+        } catch (exception: NoSuchElementException) {
+            return if (boardConfig.isBoardEmpty()) "It is a draw" else "Game is not over"
         }
-        if (isPlayer2Winner) {
-            return "Player 1 is winner"
-        }
-        if (boardConfig.isBoardEmpty()) {
-            return "It is a draw"
-        }
-        return "Game is not over"
-    }
-
-    private fun isPlayerWinner(givenPlayerScore: Int, opponentPlayerScore: Int): Boolean {
-        return givenPlayerScore >= 5 && (givenPlayerScore - opponentPlayerScore) >= 3
     }
 }
