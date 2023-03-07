@@ -33,8 +33,10 @@ class CaromBoard(
     }
 
     fun gameResult(): String {
-        val isPlayer1Winner = isPlayerWinner(player1Stats, player2Stats)
-        val isPlayer2Winner = isPlayerWinner(player2Stats, player1Stats)
+        val (player1Score) = player1Stats
+        val (player2Score) = player2Stats
+        val isPlayer1Winner = isPlayerWinner(player1Score, player2Score)
+        val isPlayer2Winner = isPlayerWinner(player2Score, player1Score)
         if (isPlayer1Winner) {
             return "Player 1 is winner"
         }
@@ -47,9 +49,7 @@ class CaromBoard(
         return "Game is not over"
     }
 
-    private fun isPlayerWinner(givenPlayer: PlayerStats, opponentPlayer: PlayerStats): Boolean {
-        val score1 = givenPlayer.score
-        val score2 = opponentPlayer.score
-        return score1 >= 5 && (score1 - score2) >= 3
+    private fun isPlayerWinner(givenPlayerScore: Int, opponentPlayerScore: Int): Boolean {
+        return givenPlayerScore >= 5 && (givenPlayerScore - opponentPlayerScore) >= 3
     }
 }
