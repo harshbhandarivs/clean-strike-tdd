@@ -2,7 +2,8 @@ package com.clean_strike.outcome
 
 import com.clean_strike.board.BoardConfig
 import com.clean_strike.player.PlayerStats
-import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
 
 class NoneOutcomeTest {
