@@ -23,6 +23,21 @@ class CaromBoardTest {
     }
 
     @Test
+    fun `Should check if player 2 is winner`() {
+        val caromBoard = CaromBoard(
+            BoardConfig(9, 1),
+            PlayerStats(0, 0, 0),
+            PlayerStats(0, 0, 0)
+        )
+
+        caromBoard.play(2, OutcomeType.STRIKE)
+        caromBoard.play(2, OutcomeType.STRIKE)
+        caromBoard.play(2, OutcomeType.RED_STRIKE)
+
+        assertEquals("Player 2 is winner", caromBoard.gameResult())
+    }
+
+    @Test
     fun `Should check if game is draw`() {
         val caromBoard = CaromBoard(
             BoardConfig(9, 1),
