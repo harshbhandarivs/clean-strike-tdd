@@ -47,8 +47,9 @@ class StrikerStrikeTest {
 
     @Test
     fun `Should return board config without any change`() {
-        val strike = NoneOutcome()
+        val strike = StrikerStrike()
         val boardConfig = BoardConfig(1, 0)
+
         val newBoardConfig = strike.calculateNewBoardConfig(boardConfig)
 
         assertEquals(newBoardConfig, newBoardConfig)
