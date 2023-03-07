@@ -11,8 +11,27 @@ class CaromBoardTest {
     fun `Should check if player 1 is winner`() {
         val caromBoard = CaromBoard(
             BoardConfig(9, 1),
-            PlayerStats(0, 0, 0),
-            PlayerStats(0, 0, 0)
+            mutableMapOf(
+                0 to PlayerStats(0, 0, 0),
+                1 to PlayerStats(0, 0, 0)
+            )
+        )
+
+        caromBoard.play(0, OutcomeType.STRIKE)
+        caromBoard.play(0, OutcomeType.STRIKE)
+        caromBoard.play(0, OutcomeType.RED_STRIKE)
+
+        assertEquals("Player 0 is winner", caromBoard.gameResult())
+    }
+
+    @Test
+    fun `Should check if player 2 is winner`() {
+        val caromBoard = CaromBoard(
+            BoardConfig(9, 1),
+            mutableMapOf(
+                0 to PlayerStats(0, 0, 0),
+                1 to PlayerStats(0, 0, 0)
+            )
         )
 
         caromBoard.play(1, OutcomeType.STRIKE)
@@ -23,26 +42,13 @@ class CaromBoardTest {
     }
 
     @Test
-    fun `Should check if player 2 is winner`() {
-        val caromBoard = CaromBoard(
-            BoardConfig(9, 1),
-            PlayerStats(0, 0, 0),
-            PlayerStats(0, 0, 0)
-        )
-
-        caromBoard.play(2, OutcomeType.STRIKE)
-        caromBoard.play(2, OutcomeType.STRIKE)
-        caromBoard.play(2, OutcomeType.RED_STRIKE)
-
-        assertEquals("Player 2 is winner", caromBoard.gameResult())
-    }
-
-    @Test
     fun `Should check if game is draw`() {
         val caromBoard = CaromBoard(
             BoardConfig(9, 1),
-            PlayerStats(0, 0, 0),
-            PlayerStats(0, 0, 0)
+            mutableMapOf(
+                0 to PlayerStats(0, 0, 0),
+                1 to PlayerStats(0, 0, 0)
+            )
         )
 
         caromBoard.play(1, OutcomeType.STRIKE)
@@ -59,8 +65,10 @@ class CaromBoardTest {
     fun `Should check if game is not over`() {
         val caromBoard = CaromBoard(
             BoardConfig(9, 1),
-            PlayerStats(0, 0, 0),
-            PlayerStats(0, 0, 0)
+            mutableMapOf(
+                0 to PlayerStats(0, 0, 0),
+                1 to PlayerStats(0, 0, 0)
+            )
         )
 
         caromBoard.play(1, OutcomeType.STRIKE)

@@ -7,8 +7,7 @@ import com.clean_strike.player.PlayerStats
 
 class CaromBoard(
     private var boardConfig: BoardConfig,
-    private var player1Stats: PlayerStats,
-    private var player2Stats: PlayerStats
+    private val playerStatsMap: MutableMap<Int, PlayerStats>
 ) {
 
     fun play(playerNumber: Int, outcomeType: OutcomeType) {
@@ -24,23 +23,20 @@ class CaromBoard(
     }
 
     private fun setPlayerStats(playerNumber: Int, outcome: Outcome) {
-        if (playerNumber == 1) {
-            player1Stats = outcome.calculateNewPlayerStats(player1Stats)
-        } else {
-            player2Stats = outcome.calculateNewPlayerStats(player2Stats)
-        }
+        val playerStats = playerStatsMap[playerNumber] ?: return
+        playerStatsMap[playerNumber] = outcome.calculateNewPlayerStats(playerStats)
     }
 
     fun gameResult(): String {
-        val (player1Score) = player1Stats
-        val (player2Score) = player2Stats
+        val (player1Score) = playerStatsMap[0]!!
+        val (player2Score) = playerStatsMap[1]!!
         val isPlayer1Winner = isPlayerWinner(player1Score, player2Score)
         val isPlayer2Winner = isPlayerWinner(player2Score, player1Score)
         if (isPlayer1Winner) {
-            return "Player 1 is winner"
+            return "Player 0 is winner"
         }
         if (isPlayer2Winner) {
-            return "Player 2 is winner"
+            return "Player 1 is winner"
         }
         if (boardConfig.isBoardEmpty()) {
             return "It is a draw"
