@@ -5,7 +5,7 @@ import com.clean_strike.player.PlayerStats
 
 class Strike : Outcome {
     override fun calculateNewPlayerStats(playerStats: PlayerStats): PlayerStats {
-        return playerStats.incrementScoreBy(1).resetConsecutiveZeros()
+        return playerStats.incrementScoreBy(1).resetConsecutivePocketMiss()
     }
 
     override fun isBoardConfigValid(boardConfig: BoardConfig): Boolean = boardConfig.numberOfBlackCoin > 0

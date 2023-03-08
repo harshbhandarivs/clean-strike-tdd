@@ -26,7 +26,7 @@ class PlayerStatsTest {
     fun `Should increment consecutive non zero by given value`() {
         val playerStats = PlayerStats(0, 0, 0)
 
-        val newPlayerStats = playerStats.incrementConsecutiveZero()
+        val newPlayerStats = playerStats.incrementConsecutivePocketMiss()
 
         assertEquals(PlayerStats(0, 0, 1), newPlayerStats)
     }
