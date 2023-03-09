@@ -10,12 +10,17 @@ class CaromBoard(
     private val playerStatsMap: MutableMap<Int, PlayerStats>
 ) {
 
-    fun play(playerNumber: Int, outcomeType: OutcomeType) {
+    fun play(playerNumber: Int, outcomeType: OutcomeType): String {
         val outcome = outcomeType.outcome
-        if (outcome.isBoardConfigValid(boardConfig) && playerStatsMap.containsKey(playerNumber)) {
-            setPlayerStats(playerNumber, outcome)
-            setBoardConfig(outcome)
+        if (!playerStatsMap.containsKey(playerNumber)) {
+            return "Invalid playerNumber"
         }
+        if (!outcome.isBoardConfigValid(boardConfig)) {
+            return "Not a valid board configuration for this outcome"
+        }
+        setPlayerStats(playerNumber, outcome)
+        setBoardConfig(outcome)
+        return "Successful Play"
     }
 
     private fun setBoardConfig(outcome: Outcome) {
