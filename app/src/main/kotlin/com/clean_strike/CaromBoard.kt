@@ -33,9 +33,13 @@ class CaromBoard(
             val playerStatsCount = playerStatsMap.entries.filter { it != playerStatsAboveOrEqualTo5 }
                 .count { (playerStatsAboveOrEqualTo5.value.score - it.value.score) <= 3 }
             if (playerStatsCount == 0) return "Player ${playerStatsAboveOrEqualTo5.key} is winner"
-            return if (boardConfig.isBoardEmpty()) "It is a draw" else "Game is not over"
+            return gameStatusWithPlayerHavingNoMajority()
         } catch (exception: NoSuchElementException) {
-            return if (boardConfig.isBoardEmpty()) "It is a draw" else "Game is not over"
+            return gameStatusWithPlayerHavingNoMajority()
         }
+    }
+
+    private fun gameStatusWithPlayerHavingNoMajority(): String {
+        return if (boardConfig.isBoardEmpty()) "It is a draw" else "Game is not over"
     }
 }
