@@ -3,20 +3,26 @@ package com.clean_strike
 import com.clean_strike.board.BoardConfig
 import com.clean_strike.outcome.OutcomeType
 import com.clean_strike.player.PlayerStats
+import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import kotlin.test.assertEquals
 
 class CaromBoardTest {
-    @Test
-    fun `Should check if player 1 is winner`() {
-        val caromBoard = CaromBoard(
+    private lateinit var caromBoard: CaromBoard
+
+    @BeforeEach
+    fun setUp() {
+        caromBoard = CaromBoard(
             BoardConfig(9, 1),
             mutableMapOf(
                 0 to PlayerStats(0, 0, 0),
                 1 to PlayerStats(0, 0, 0)
             )
         )
+    }
 
+    @Test
+    fun `Should check if player 1 is winner`() {
         caromBoard.play(0, OutcomeType.STRIKE)
         caromBoard.play(0, OutcomeType.STRIKE)
         caromBoard.play(0, OutcomeType.RED_STRIKE)
@@ -26,14 +32,6 @@ class CaromBoardTest {
 
     @Test
     fun `Should check if player 2 is winner`() {
-        val caromBoard = CaromBoard(
-            BoardConfig(9, 1),
-            mutableMapOf(
-                0 to PlayerStats(0, 0, 0),
-                1 to PlayerStats(0, 0, 0)
-            )
-        )
-
         caromBoard.play(1, OutcomeType.STRIKE)
         caromBoard.play(1, OutcomeType.STRIKE)
         caromBoard.play(1, OutcomeType.RED_STRIKE)
@@ -43,14 +41,6 @@ class CaromBoardTest {
 
     @Test
     fun `Should check if game is draw`() {
-        val caromBoard = CaromBoard(
-            BoardConfig(9, 1),
-            mutableMapOf(
-                0 to PlayerStats(0, 0, 0),
-                1 to PlayerStats(0, 0, 0)
-            )
-        )
-
         caromBoard.play(1, OutcomeType.STRIKE)
         caromBoard.play(1, OutcomeType.STRIKE)
         caromBoard.play(1, OutcomeType.RED_STRIKE)
@@ -63,14 +53,6 @@ class CaromBoardTest {
 
     @Test
     fun `Should check if game is not over`() {
-        val caromBoard = CaromBoard(
-            BoardConfig(9, 1),
-            mutableMapOf(
-                0 to PlayerStats(0, 0, 0),
-                1 to PlayerStats(0, 0, 0)
-            )
-        )
-
         caromBoard.play(1, OutcomeType.STRIKE)
         caromBoard.play(1, OutcomeType.STRIKE)
         caromBoard.play(1, OutcomeType.RED_STRIKE)
