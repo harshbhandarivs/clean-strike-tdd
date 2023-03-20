@@ -6,19 +6,21 @@ package com.clean_strike
 import com.clean_strike.board.BoardConfig
 import com.clean_strike.input.InputInterface
 import com.clean_strike.outcome.OutcomeType
+import com.clean_strike.output.OutputInterface
 import com.clean_strike.player.PlayerStats
 
 class Game(
-    val boardConfig: BoardConfig,
+    boardConfig: BoardConfig,
     private val playerStatsMutableMap: MutableMap<Int, PlayerStats>,
-    private val inputInterfaceImpl: InputInterface
+    private val inputInterfaceImpl: InputInterface,
+    private val outputInterface: OutputInterface
 ) {
     private val caromBoard = CaromBoard(boardConfig, playerStatsMutableMap)
     private var playerChoice = 0
     fun loop() {
         try {
             printOutcomes()
-            println("Player $playerChoice, Pick a choice")
+            outputInterface.printLine("Player $playerChoice, Pick a choice")
             val input = inputInterfaceImpl.getNextLine().toInt()
             val outcomeType = OutcomeType.values()[input]
             val result = caromBoard.play(playerChoice, outcomeType)
@@ -29,13 +31,13 @@ class Game(
                 return
             }
         } catch (exception: Exception) {
-            println(exception.message)
+            outputInterface.printLine(exception.message)
         }
         playerChoice = (playerChoice + 1) % playerStatsMutableMap.size
         loop()
     }
 
     private fun printOutcomes() {
-        OutcomeType.values().mapIndexed { index, it -> "$index. $it" }.forEach { println(it) }
+        OutcomeType.values().mapIndexed { index, it -> "$index. $it" }.forEach { outputInterface.printLine(it) }
     }
 }
