@@ -24,10 +24,10 @@ class Game(
             val input = inputInterfaceImpl.getNextLine().toInt()
             val outcomeType = OutcomeType.values()[input]
             val result = caromBoard.play(playerChoice, outcomeType)
-            println(result)
+            outputInterface.printLine(result)
             val gameResult = caromBoard.gameResult()
             if (gameResult != "Game is not over") {
-                println(gameResult)
+                outputInterface.printLine(gameResult)
                 return
             }
         } catch (exception: Exception) {

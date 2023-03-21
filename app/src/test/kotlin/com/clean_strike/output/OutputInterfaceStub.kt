@@ -1,7 +1,7 @@
 package com.clean_strike.output
 
-class OutputInterfaceStub: OutputInterface {
+class OutputInterfaceStub(val outputLines: MutableList<String?>): OutputInterface {
     override fun printLine(value: String?) {
-        TODO("Not yet implemented")
+        outputLines.add(value)
     }
 }
